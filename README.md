@@ -6,4 +6,4 @@
 * [Ссылка на проект в GH PAGES](https://ataikh94.github.io/mesto/)
  
 При выполнении работы использованы следующие методы:
-HTML, CSS, JS, grid, flex.
+HTML, CSS, JS, grid, flex. Файловая структура организована по БЭМ (Nested).
