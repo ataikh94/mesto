@@ -8,4 +8,5 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
+    position: relative;
 }

@@ -6,6 +6,10 @@
     border: solid 1px #fff;
 }
 
+.profile__add-button:hover {
+    opacity: .6;
+}
+
 @media screen and (max-width: 890px) {
     .profile__add-button {
         text-align: center;

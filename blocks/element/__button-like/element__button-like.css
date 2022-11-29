@@ -1,0 +1,8 @@
+.element__button-like {
+    width: 22px;
+    height: 19px;
+}
+
+.element__button-like:hover {
+    opacity: .6;
+}
