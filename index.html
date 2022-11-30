@@ -19,72 +19,73 @@
           <img src="images/avatar.png" alt="Аватар" class="profile__avatar">
           <div class="info">
             <h1 class="info__name">Жак-Ив Кусто</h1>
-            <img src="images/edit_button.png" alt="Кнопка Изменить" class="info__edit-button">
+            <button type="button" class="info__edit-button"></button>
             <p class="info__text">Исследователь океана</p>
           </div>
         </div>
-        <img src="images/add_button.png" alt="Кнопка Добавить" class="profile__add-button">
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
-        <div class="element">
+        <article class="element">
           <img src="images/town.jpg" alt="Город" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Город</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Город</h2>
+            <button type="button" class="element__button-like"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="images/dawn.png" alt="Гора Эльбрус" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Гора Эльбрус</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Гора Эльбрус</h2>
+            <button type="button" class="element__button-like"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="images/flower.jpg" alt="Цветок" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Цветок</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Цветок</h2>
+            <button type="button" class="element__button-like"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="images/winter.jpg" alt="Зимний пейзаж" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Зимний пейзаж</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Зимний пейзаж</h2>
+            <button type="button" class="element__button-like"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="images/woman.jpg" alt="Беременная женщина" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Беременная женщина</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Беременная женщина</h2>
+            <button type="button" class="element__button-like">
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="images/autumn.jpg" alt="Осень" class="element__image">
           <div class="element__group">
-            <p class="element__desc">Осень</p>
-            <img src="images/like.svg" alt="Кнопка Нравится" class="element__button-like">
+            <h2 class="element__desc">Осень</h2>
+            <button type="button" class="element__button-like"></button>
           </div>
-        </div>
+        </article>
       </section>
-      <div class="popup">
-        <div class="popup__container">
-          <img src="images/close_button.png" alt="Кнопка выхода" class="popup__close-button">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__name">
-          <input type="text" class="popup__text">
-          <button class="popup__save-button">Сохранить</button>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form name="popupForm" class="popup__form">
+          <input type="text" class="popup__input popup__input_name" name="popupName">
+          <input type="text" class="popup__input popup__input_text" name="popupText">
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <script src="scripts/script.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>

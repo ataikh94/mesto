@@ -2,8 +2,14 @@
     max-width: 22px;
     height: 22px;
     align-self: center;
-    padding: 14px 63px;
-    border: solid 1px #fff;
+    padding: 22px 73px;
+    border: solid 2px #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    background-image: url('../../../images/add_button.svg');
+    background-color: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .profile__add-button:hover {
@@ -15,7 +21,7 @@
         text-align: center;
         max-width: 16px;
         height: 16px;
-        padding: 16px 133px;
-        margin-top: 32px;
+        padding: 23px 138px;
+        margin-top: 34px;
     }
 }

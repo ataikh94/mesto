@@ -8,7 +8,9 @@
     width: 358px;
     padding: 14px 0 11px;
     margin: 48px 36px 37px;
+    border: 0;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .popup__save-button:hover {

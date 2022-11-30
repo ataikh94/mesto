@@ -1,22 +1,27 @@
+/* Объявление переменных */
 let openPopup = document.querySelector('.info__edit-button');
 let closePopup = document.querySelector('.popup__close-button');
 let popUp = document.querySelector('.popup');
 let profileName = document.querySelector('.info__name');
 let profileText = document.querySelector('.info__text');
-let popupName = document.querySelector('.popup__name');
-let popupText = document.querySelector('.popup__text');
-let popupSave = document.querySelector('.popup__save-button');
+let editForm = document.querySelector('.popup__form');
+let popupName = editForm.querySelector('.popup__input_name');
+let popupText = editForm.querySelector('.popup__input_text');
 
+
+/* Функция открытия модального окна */
 function popupOpened() {
     popUp.classList.add('popup_opened');
     popupName.value = profileName.textContent;
     popupText.value = profileText.textContent;
 }
 
+/* Функция закрытия модального окна */
 function popupClosed() {
     popUp.classList.remove('popup_opened');
 }
 
+/* Функция сохранения информации */
 function popapSave(e) {
     e.preventDefault();
     profileName.textContent = popupName.value;
@@ -24,12 +29,13 @@ function popapSave(e) {
     popupClosed();
 }
 
+/* События */
 openPopup.addEventListener('click', popupOpened);
 closePopup.addEventListener('click', popupClosed);
-popupSave.addEventListener('click', popapSave);
+editForm.addEventListener('submit', popapSave);
 
-popUp.addEventListener('click', function (closePopup) {
+/* popUp.addEventListener('click', function (closePopup) {
     if (closePopup.target === closePopup.currentTarget) {
         popupClosed();
     }
-})
+}) */

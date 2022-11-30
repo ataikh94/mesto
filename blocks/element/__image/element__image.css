@@ -1,6 +1,6 @@
 .element__image {
     width: 282px;
-    max-height: 282px;
+    height: 282px;
     object-fit: cover;
     object-position: center;
     display: block;

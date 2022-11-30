@@ -1,5 +1,5 @@
-.popup__name {
-    margin: 54px 36px 0;
+.popup__input {
+    margin: 20px 36px 0;
     padding-bottom: 13px;
     width: 358px;
     border: 0;
@@ -10,17 +10,24 @@
     color: #000000;
 }
 
+.popup__input:first-child {
+    margin: 50px 36px 0;
+}
+
 @media screen and (max-width: 920px) {
-    .popup__name {
+    .popup__input {
         width: 244px;
     }
 }
 
 @media screen and (max-width: 590px) {
-    .popup__name {
+    .popup__input {
         width: 238px;
-        margin: 75px 22px 0;
-        padding-bottom: 8px;
+        margin: 21px 22px 0;
+        padding-bottom: 12px;
+    }
+
+    .popup__input:first-child {
+        margin: 74px 22px 0;
     }
 }
-

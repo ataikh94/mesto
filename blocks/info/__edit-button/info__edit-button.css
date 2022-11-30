@@ -1,10 +1,15 @@
 .info__edit-button {
-    width: 10px;
-    height: 10px;
-    padding: 7px;
+    width: 18px;
+    height: 18px;
     border: solid 1px #fff;
     align-self: end;
-    margin-bottom: 8px;
+    margin: 0 0 9px 2px;
+    padding: 11px 11px;
+    cursor: pointer;
+    background-image: url('../../../images/edit_button.svg');
+    background-color: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .info__edit-button:hover {
@@ -13,8 +18,9 @@
 
 @media screen and (max-width: 890px) {
     .info__edit-button {
-        width: 7.5px;
-        height: 7.5px;
-        padding: 4px;
+        width: 18px;
+        height: 18px;
+        padding: 3px;
+        margin: 7px 2px;
     }
 }

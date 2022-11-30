@@ -4,6 +4,10 @@
     line-height: 1.14;
     margin: 0;
     align-self: end;
+    text-overflow: ellipsis;
+    max-width: 294px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media screen and (max-width: 890px) {
@@ -16,5 +20,6 @@
     .info__name {
         font-size: 27px;
         line-height: 33px;
+        max-width: 189px;
     }
 }
