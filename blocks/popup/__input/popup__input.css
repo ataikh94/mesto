@@ -1,5 +1,5 @@
 .popup__input {
-    margin: 20px 36px 0;
+    margin: 20px 34px 0;
     padding-bottom: 13px;
     width: 358px;
     border: 0;
@@ -11,7 +11,7 @@
 }
 
 .popup__input:first-child {
-    margin: 50px 36px 0;
+    margin: 50px 34px 0;
 }
 
 @media screen and (max-width: 920px) {
@@ -23,11 +23,11 @@
 @media screen and (max-width: 590px) {
     .popup__input {
         width: 238px;
-        margin: 21px 22px 0;
+        margin: 21px 20px 0;
         padding-bottom: 12px;
     }
 
     .popup__input:first-child {
-        margin: 74px 22px 0;
+        margin: 74px 20px 0;
     }
 }

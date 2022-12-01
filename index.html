@@ -19,53 +19,53 @@
           <img src="images/avatar.png" alt="Аватар" class="profile__avatar">
           <div class="info">
             <h1 class="info__name">Жак-Ив Кусто</h1>
-            <button type="button" class="info__edit-button"></button>
+            <button type="button" class="info__edit-button" aria-label="Кнопка редактирования информации профиля"></button>
             <p class="info__text">Исследователь океана</p>
           </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-button" aria-label="Кнопка добавления изображения"></button>
       </section>
       <section class="elements">
         <article class="element">
           <img src="images/town.jpg" alt="Город" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Город</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/dawn.png" alt="Гора Эльбрус" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Гора Эльбрус</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/flower.jpg" alt="Цветок" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Цветок</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/winter.jpg" alt="Зимний пейзаж" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Зимний пейзаж</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/woman.jpg" alt="Беременная женщина" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Беременная женщина</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/autumn.jpg" alt="Осень" class="element__image">
           <div class="element__group">
             <h2 class="element__desc">Осень</h2>
-            <button type="button" class="element__button-like"></button>
+            <button type="button" class="element__button-like" aria-label="Кнопка Нравится"></button>
           </div>
         </article>
       </section>
@@ -75,11 +75,11 @@
     </footer>
     <div class="popup">
       <div class="popup__container">
-        <button type="button" class="popup__close-button"></button>
+        <button type="button" class="popup__close-button" aria-label="Кнопка закрытия модального окна"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popupForm" class="popup__form">
-          <input type="text" class="popup__input popup__input_name" name="popupName">
-          <input type="text" class="popup__input popup__input_text" name="popupText">
+        <form name="popupEditProfileInfo" class="popup__form">
+          <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Укажите Ваше имя" required>
+          <input type="text" class="popup__input popup__input_type_text" name="popupText" placeholder="Опишите Вашу деятельность" required>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
