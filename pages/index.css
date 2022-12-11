@@ -17,12 +17,12 @@
 @import url(../blocks/info/__text/info__text.css);
 @import url(../blocks/info/__edit-button/info__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__desc/element__desc.css);
 @import url(../blocks/element/__button-like/element__button-like.css);
+@import url(../blocks/card-list/card__list.css);
 
 /*POPUP*/
 @import url(../blocks/popup/popup.css);
