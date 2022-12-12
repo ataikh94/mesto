@@ -1,12 +1,17 @@
 .element__button-delete {
-    width: 18px;
-    height: 19px;
     cursor: pointer;
-    background-image: url('../../../images/Trash.svg');
-    background-color: inherit;
+    background-image: url('../../../images/delete_button.svg');
+    background-color: initial;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 18px 19px;
     border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    width: 18px;
+    height: 19px;
 }
 
 .element__button-delete:hover {

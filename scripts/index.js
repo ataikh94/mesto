@@ -53,6 +53,7 @@ function createCard(name, link) {
   //Клонируем кусочек шаблона card в tempate
   const card = template.content.querySelector('.element').cloneNode(true);
   const buttonLike = card.querySelector('.element__button-like');
+  const buttonDelete = card.querySelector('.element__button-delete');
 
   //Зададим содержимое элементам контейнера значения
   card.querySelector('.element__desc').textContent = name;
@@ -60,6 +61,7 @@ function createCard(name, link) {
   card.querySelector('.element__image').alt = name;
 
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
+  buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
   return card;
 };
 
@@ -127,4 +129,9 @@ function closesPopup(popup){
 
 function btnLike(like) {
   like.classList.toggle('element__button-like_active');
+};
+
+function btnDelete(deleted) {
+  const elem = deleted.closest('.element');
+  elem.remove();
 };
