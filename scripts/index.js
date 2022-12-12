@@ -24,13 +24,28 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+/* Объявление переменных */
+let openPopup = document.querySelector('.info__edit-button');
+let addCardBtn = document.querySelector('.profile__add-button');
+let closePopup = document.querySelectorAll('.popup__close-button');
+const popUp = document.querySelector('#popupEditProfile');
+const popupAddCard = document.querySelector('#popupAddCard');
+let popUps = document.querySelectorAll('.popup');
+let profileName = document.querySelector('.info__name');
+let profileText = document.querySelector('.info__text');
+let editForm = document.querySelector('.popup__form');
+let popupName = editForm.querySelector('.popup__input_type_name');
+let popupText = editForm.querySelector('.popup__input_type_text');
+
+const inputName = document.querySelector('.popup__input_type_title');
+const inputDesc = document.querySelector('.popup__input_type_link');
 
 /* Отображение карточек из коробки*/
 //1. Определим переменную, куда будут добавлены элементы
 const cardContainer = document.querySelector('.card__list');
 
 //2. Создадим функцию, которая будет добавлять элементы на страницу
-function createCard(cardElem) {
+function createCard(name, link) {
 
   //Найдём template, который будем клонировать
   const template = document.querySelector('#card-template');
@@ -39,27 +54,35 @@ function createCard(cardElem) {
   const card = template.content.querySelector('.element').cloneNode(true);
 
   //Зададим содержимое элементам контейнера значения
-  card.querySelector('.element__desc').textContent = cardElem.name;
-  card.querySelector('.element__image').src = cardElem.link;
-  card.querySelector('.element__image').alt = cardElem.name;
+  card.querySelector('.element__desc').textContent = name;
+  card.querySelector('.element__image').src = link;
+  card.querySelector('.element__image').alt = name;
   return card;
 };
 
 //3. Создадим функцию, которая будет отрисовывать карточки на странице
-cardContainer.append(...initialCards.map(createCard));
+function renderCards(name, link) {
+  cardContainer.prepend(createCard(name, link));
+}
 
-/* Объявление переменных */
-let openPopup = document.querySelector('.info__edit-button');
-let addCard = document.querySelector('.profile__add-button');
-let closePopup = document.querySelectorAll('.popup__close-button');
-let popUp = document.querySelector('.popup');
-let popUps = document.querySelectorAll('.popup');
-let profileName = document.querySelector('.info__name');
-let profileText = document.querySelector('.info__text');
-let editForm = document.querySelector('.popup__form');
-let popupName = editForm.querySelector('.popup__input_type_name');
-let popupText = editForm.querySelector('.popup__input_type_text');
-const popupAddCard = document.querySelector('#popupAddCard');
+initialCards.forEach(({ name, link }) => {
+  renderCards(name, link);
+})
+
+const addCard = (event) => {
+  event.preventDefault();
+
+  const name = inputName.value;
+  const link = inputDesc.value;
+  renderCards(name, link);
+  closesPopup(popupAddCard);
+  inputName.value = '';
+  inputDesc.value = '';
+}
+
+const form = document.querySelector('.popup_form_addCard');
+form.addEventListener('submit', addCard);
+
 
 /* Функция открытия модального окна редактирования профиля*/
 function openedPopup() {
@@ -72,7 +95,7 @@ function openedPopup() {
 function addedPopup() {
   popupAddCard.classList.add('popup_opened');
 }
-addCard.addEventListener('click', addedPopup);
+addCardBtn.addEventListener('click', addedPopup);
 
 /* Функция закрытия модальных окон */
 closePopup.forEach(button => {
@@ -94,3 +117,7 @@ function savedPopup(e) {
 /* События */
 openPopup.addEventListener('click', openedPopup);
 editForm.addEventListener('submit', savedPopup);
+
+function closesPopup(popup){
+  popup.classList.remove('popup_opened');
+}
