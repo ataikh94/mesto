@@ -52,11 +52,14 @@ function createCard(name, link) {
 
   //Клонируем кусочек шаблона card в tempate
   const card = template.content.querySelector('.element').cloneNode(true);
+  const buttonLike = card.querySelector('.element__button-like');
 
   //Зададим содержимое элементам контейнера значения
   card.querySelector('.element__desc').textContent = name;
   card.querySelector('.element__image').src = link;
   card.querySelector('.element__image').alt = name;
+
+  buttonLike.addEventListener('click', () => btnLike(buttonLike));
   return card;
 };
 
@@ -121,3 +124,7 @@ editForm.addEventListener('submit', savedPopup);
 function closesPopup(popup){
   popup.classList.remove('popup_opened');
 }
+
+function btnLike(like) {
+  like.classList.toggle('element__button-like_active');
+};
