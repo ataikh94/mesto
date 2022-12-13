@@ -1,0 +1,5 @@
+.popup__container-image{
+    box-shadow: none;
+    background-color: transparent;
+    max-width: 75vw;
+}

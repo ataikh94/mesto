@@ -55,6 +55,11 @@ function createCard(name, link) {
   const buttonLike = card.querySelector('.element__button-like');
   const buttonDelete = card.querySelector('.element__button-delete');
 
+  const modal = document.querySelector('#popupImage');
+  const cardLink = modal.querySelector('.popup__image');
+  const cardText = modal.querySelector('.popup__text');
+  const cardImage = card.querySelector('.element__image');
+
   //Зададим содержимое элементам контейнера значения
   card.querySelector('.element__desc').textContent = name;
   card.querySelector('.element__image').src = link;
@@ -62,6 +67,13 @@ function createCard(name, link) {
 
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
   buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
+
+  cardImage.addEventListener('click', function() {
+    modal.classList.add('popup_opened');
+    cardLink.src = cardImage.src;
+    cardText.textContent = name;
+    cardLink.alt = name;
+  });
   return card;
 };
 
