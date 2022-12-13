@@ -38,10 +38,10 @@ let popupName = editForm.querySelector('.popup__input_type_name');
 let popupText = editForm.querySelector('.popup__input_type_text');
 const inputName = document.querySelector('.popup__input_type_title');
 const inputDesc = document.querySelector('.popup__input_type_link');
-const form = document.querySelector('.popup_form_addCard');
+const form = document.querySelector('.popup__form-addCard');
 
 /* ОТОБРАЖЕНИЕ КАРТОЧЕК ИЗ КОРОБКИ */
-const cardContainer = document.querySelector('.card__list');
+const cardContainer = document.querySelector('.card-list');
 /*Функция создания карточек*/
 function createCard(name, link) {
   const template = document.querySelector('#card-template');
