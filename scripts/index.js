@@ -25,15 +25,15 @@ const initialCards = [
   }
 ];
 /* Объявление переменных */
-let openPopup = document.querySelector('.info__edit-button');
-let addCardBtn = document.querySelector('.profile__add-button');
-let closePopup = document.querySelectorAll('.popup__close-button');
+const openPopup = document.querySelector('.info__edit-button');
+const addCardBtn = document.querySelector('.profile__add-button');
+const closePopup = document.querySelectorAll('.popup__close-button');
 const popUp = document.querySelector('#popupEditProfile');
 const popupAddCard = document.querySelector('#popupAddCard');
-let popUps = document.querySelectorAll('.popup');
+const popUps = document.querySelectorAll('.popup');
 let profileName = document.querySelector('.info__name');
 let profileText = document.querySelector('.info__text');
-let editForm = document.querySelector('.popup__form');
+const editForm = document.querySelector('.popup__form');
 let popupName = editForm.querySelector('.popup__input_type_name');
 let popupText = editForm.querySelector('.popup__input_type_text');
 const inputName = document.querySelector('.popup__input_type_title');
