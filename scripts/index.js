@@ -36,39 +36,30 @@ let profileText = document.querySelector('.info__text');
 let editForm = document.querySelector('.popup__form');
 let popupName = editForm.querySelector('.popup__input_type_name');
 let popupText = editForm.querySelector('.popup__input_type_text');
-
 const inputName = document.querySelector('.popup__input_type_title');
 const inputDesc = document.querySelector('.popup__input_type_link');
+const form = document.querySelector('.popup_form_addCard');
 
-/* Отображение карточек из коробки*/
-//1. Определим переменную, куда будут добавлены элементы
+/* ОТОБРАЖЕНИЕ КАРТОЧЕК ИЗ КОРОБКИ */
 const cardContainer = document.querySelector('.card__list');
-
-//2. Создадим функцию, которая будет добавлять элементы на страницу
+/*Функция создания карточек*/
 function createCard(name, link) {
-
-  //Найдём template, который будем клонировать
   const template = document.querySelector('#card-template');
-
-  //Клонируем кусочек шаблона card в tempate
   const card = template.content.querySelector('.element').cloneNode(true);
   const buttonLike = card.querySelector('.element__button-like');
   const buttonDelete = card.querySelector('.element__button-delete');
-
   const modal = document.querySelector('#popupImage');
   const cardLink = modal.querySelector('.popup__image');
   const cardText = modal.querySelector('.popup__text');
   const cardImage = card.querySelector('.element__image');
 
-  //Зададим содержимое элементам контейнера значения
   card.querySelector('.element__desc').textContent = name;
   card.querySelector('.element__image').src = link;
   card.querySelector('.element__image').alt = name;
 
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
   buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
-
-  cardImage.addEventListener('click', function() {
+  cardImage.addEventListener('click', function () {
     modal.classList.add('popup_opened');
     cardLink.src = cardImage.src;
     cardText.textContent = name;
@@ -76,8 +67,7 @@ function createCard(name, link) {
   });
   return card;
 };
-
-//3. Создадим функцию, которая будет отрисовывать карточки на странице
+/*Функция отрисовки карточек на странице*/
 function renderCards(name, link) {
   cardContainer.prepend(createCard(name, link));
 }
@@ -97,22 +87,35 @@ const addCard = (event) => {
   inputDesc.value = '';
 }
 
-const form = document.querySelector('.popup_form_addCard');
-form.addEventListener('submit', addCard);
-
-
 /* Функция открытия модального окна редактирования профиля*/
-function openedPopup() {
-  popUp.classList.add('popup_opened');
+function openEditProfilePopup() {
+  openedPopup(popUp);
   popupName.value = profileName.textContent;
   popupText.value = profileText.textContent;
 }
+/*Функция открытия указанного модального окна*/
+function openedPopup(modal) {
+  modal.classList.add('popup_opened');
+}
+/*Функция закрытия указанного модального окна*/
+function closesPopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+/*Функция лайка карточки*/
+function btnLike(like) {
+  like.classList.toggle('element__button-like_active');
+};
+
+/*Функция удаления карточки*/
+function btnDelete(deleted) {
+  const elem = deleted.closest('.element');
+  elem.remove();
+};
 
 /*Функция открытия модального окна для добавления информации*/
 function addedPopup() {
-  popupAddCard.classList.add('popup_opened');
+  openedPopup(popupAddCard);
 }
-addCardBtn.addEventListener('click', addedPopup);
 
 /* Функция закрытия модальных окон */
 closePopup.forEach(button => {
@@ -128,22 +131,11 @@ function savedPopup(e) {
   e.preventDefault();
   profileName.textContent = popupName.value;
   profileText.textContent = popupText.value;
-  popUp.classList.remove('popup_opened');
+  closesPopup(popUp);
 }
 
-/* События */
-openPopup.addEventListener('click', openedPopup);
+/*События*/
 editForm.addEventListener('submit', savedPopup);
-
-function closesPopup(popup){
-  popup.classList.remove('popup_opened');
-}
-
-function btnLike(like) {
-  like.classList.toggle('element__button-like_active');
-};
-
-function btnDelete(deleted) {
-  const elem = deleted.closest('.element');
-  elem.remove();
-};
+form.addEventListener('submit', addCard);
+openPopup.addEventListener('click', openEditProfilePopup);
+addCardBtn.addEventListener('click', addedPopup);
