@@ -1,3 +1,5 @@
+'use strict';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -60,7 +62,7 @@ function createCard(name, link) {
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
   buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
   cardImage.addEventListener('click', function () {
-    modal.classList.add('popup_opened');
+    openedPopup(modal);
     cardLink.src = cardImage.src;
     cardText.textContent = name;
     cardLink.alt = name;
