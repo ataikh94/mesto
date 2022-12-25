@@ -138,3 +138,14 @@ editForm.addEventListener('submit', savedPopup);
 formAddCard.addEventListener('submit', addCard);
 openPopup.addEventListener('click', openEditProfilePopup);
 addCardBtn.addEventListener('click', addedPopup);
+
+closePopups.forEach((button) => {
+  const popup = button.closest('.popup');
+  const closePopupEsc = (e) => {
+    if (e.key === 'Escape') {
+      closesPopup(popup);
+    }
+  } 
+  document.addEventListener('keydown', closePopupEsc);
+  button.addEventListener('click', () => closesPopup(popup));
+});
