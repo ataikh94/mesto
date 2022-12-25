@@ -148,4 +148,9 @@ closePopups.forEach((button) => {
   } 
   document.addEventListener('keydown', closePopupEsc);
   button.addEventListener('click', () => closesPopup(popup));
+  popup.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      closesPopup(popup);
+    }
+  })
 });
