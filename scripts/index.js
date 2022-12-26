@@ -97,9 +97,11 @@ function openEditProfilePopup() {
   popupName.value = profileName.textContent;
   popupText.value = profileText.textContent;
 }
+
 /*Функция открытия указанного модального окна*/
 function openedPopup(modal) {
   modal.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 /*Функция закрытия указанного модального окна*/
 function closesPopup(popup) {
@@ -141,14 +143,19 @@ formAddCard.addEventListener('submit', addCard);
 openPopup.addEventListener('click', openEditProfilePopup);
 addCardBtn.addEventListener('click', addedPopup);
 
+const closePopupEsc = (e) => {
+  if (e.key === 'Escape') {
+    popUps.forEach(popup => {
+        if (popup.classList.contains('popup_opened')) {
+          closesPopup(popup);
+      }
+    })
+  }
+}
+
 closePopups.forEach((button) => {
   const popup = button.closest('.popup');
-  const closePopupEsc = (e) => {
-    if (e.key === 'Escape') {
-      closesPopup(popup);
-    }
-  } 
-  document.addEventListener('keydown', closePopupEsc);
+  document.removeEventListener('keydown', closePopupEsc);
   button.addEventListener('click', () => closesPopup(popup));
   popup.addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
