@@ -60,7 +60,6 @@ function createCard(name, link) {
   card.querySelector('.element__desc').textContent = name;
   card.querySelector('.element__image').src = link;
   card.querySelector('.element__image').alt = name;
-
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
   buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
   cardImage.addEventListener('click', function () {
@@ -85,10 +84,12 @@ const addCard = (event) => {
 
   const name = inputName.value;
   const link = inputDesc.value;
-  renderCards(name, link);
-  closesPopup(popupAddCard);
-  event.target.reset();
-  setButtonState(formAddCardInputLists,formAddCardSaveButton, validationList);
+  if (name !== '' && link !== '') {
+    renderCards(name, link);
+    closesPopup(popupAddCard);
+    event.target.reset();
+    setButtonState(formAddCardInputLists, formAddCardSaveButton, validationList);
+  }
 }
 
 /* Функция открытия модального окна редактирования профиля*/
@@ -134,6 +135,8 @@ function savedPopup(e) {
   e.preventDefault();
   profileName.textContent = popupName.value;
   profileText.textContent = popupText.value;
+  profileName.addEventListener('keydown', savePopupEnter);
+  profileText.addEventListener('keydown', savePopupEnter);
   closesPopup(popUp);
 }
 
@@ -146,12 +149,23 @@ addCardBtn.addEventListener('click', addedPopup);
 const closePopupEsc = (e) => {
   if (e.key === 'Escape') {
     popUps.forEach(popup => {
-        if (popup.classList.contains('popup_opened')) {
-          closesPopup(popup);
+      if (popup.classList.contains('popup_opened')) {
+        closesPopup(popup);
       }
     })
   }
 }
+
+const savePopupEnter = (e) => {
+  if (e.key === 'Enter') {
+    const valideInput = validateInput(e.target.closest('.popup'), e.target, validationList);
+    if (valideInput) {
+      closesPopup(e.target.closest('.popup'));
+    }
+  }
+}
+inputName.addEventListener('keydown',savePopupEnter);
+inputDesc.addEventListener('keydown',savePopupEnter);
 
 closePopups.forEach((button) => {
   const popup = button.closest('.popup');

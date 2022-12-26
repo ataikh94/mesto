@@ -20,9 +20,12 @@ function validateInput(form, input, config) {
     }
 };
 
+function hasErrors(inputs) {
+    return Array.from(inputs).some(input => !input.validity.valid)
+};
+
 function setButtonState(inputs, button, config) {
-    const hasErrors = Array.from(inputs).some(input => !input.validity.valid)
-    if (hasErrors) {
+    if (hasErrors(inputs)) {
         button.classList.add(config.inactiveButtonClass);
         button.classList.remove(config.activeButtonClass);
         button.setAttribute('disabled', true);
@@ -36,7 +39,6 @@ function setButtonState(inputs, button, config) {
 function validateForm(form, config) {
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     const button = form.querySelector(config.submitButtonSelector);
-    setButtonState(inputs, button, config);
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             validateInput(form, input, config);
@@ -56,5 +58,3 @@ function enableValidation(config) {
 };
 
 enableValidation(validationList);
-
-
