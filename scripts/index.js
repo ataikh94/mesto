@@ -41,6 +41,8 @@ const popupText = editForm.querySelector('.popup__input_type_text');
 const inputName = document.querySelector('.popup__input_type_title');
 const inputDesc = document.querySelector('.popup__input_type_link');
 const formAddCard = document.querySelector('.popup__form-addCard');
+const formAddCardInputLists = formAddCard.querySelectorAll('.popup__input');
+const formAddCardSaveButton = formAddCard.querySelector(validationList.submitButtonSelector);
 const cardContainer = document.querySelector('.card-list');
 const template = document.querySelector('#card-template');
 const modal = document.querySelector('#popupImage');
@@ -85,8 +87,8 @@ const addCard = (event) => {
   const link = inputDesc.value;
   renderCards(name, link);
   closesPopup(popupAddCard);
-  inputName.value = '';
-  inputDesc.value = '';
+  event.target.reset();
+  setButtonState(formAddCardInputLists,formAddCardSaveButton, validationList);
 }
 
 /* Функция открытия модального окна редактирования профиля*/

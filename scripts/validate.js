@@ -1,10 +1,10 @@
-const enableValidation = {
+const validationList = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save-button',
     inactiveButtonClass: 'popup__save-button_type_disabled',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error'
+    errorClass: 'popup__input-error_active'
 };
 
 function validateInput(form, input, config) {
@@ -21,7 +21,7 @@ function validateInput(form, input, config) {
 };
 
 function setButtonState(inputs, button, config) {
-    const hasErrors = inputs.some(input => !input.validity.valid)
+    const hasErrors = Array.from(inputs).some(input => !input.validity.valid)
     if (hasErrors) {
         button.classList.add(config.inactiveButtonClass);
         button.classList.remove(config.activeButtonClass);
@@ -36,6 +36,7 @@ function setButtonState(inputs, button, config) {
 function validateForm(form, config) {
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     const button = form.querySelector(config.submitButtonSelector);
+    setButtonState(inputs, button, config);
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             validateInput(form, input, config);
@@ -44,7 +45,7 @@ function validateForm(form, config) {
     })
 };
 
-function validation(config) {
+function enableValidation(config) {
     const forms = Array.from(document.querySelectorAll(config.formSelector));
     forms.forEach((form) => {
         form.addEventListener('submit', (e) => {
@@ -54,6 +55,6 @@ function validation(config) {
     })
 };
 
-validation(enableValidation);
+enableValidation(validationList);
 
 

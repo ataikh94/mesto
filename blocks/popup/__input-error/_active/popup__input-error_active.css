@@ -1,3 +1,16 @@
 .popup__input-error_active {
     display: block;
+    max-width: 358px;
+    margin: 0 auto;
 }
+
+@media screen and (max-width: 920px) {
+    .popup__input-error_active {
+        max-width: 244px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .popup__input-error_active {
+        max-width: 238px;
+    }
