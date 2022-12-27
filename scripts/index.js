@@ -27,17 +27,17 @@ const initialCards = [
   }
 ];
 /* Объявление переменных */
-const openPopup = document.querySelector('.info__edit-button');
-const addCardBtn = document.querySelector('.profile__add-button');
-const closePopups = document.querySelectorAll('.popup__close-button');
+const btnEditProfile = document.querySelector('.info__edit-button');
+const btnAddCard = document.querySelector('.profile__add-button');
+const btnclosePopups = document.querySelectorAll('.popup__close-button');
 const popUp = document.querySelector('#popupEditProfile');
 const popupAddCard = document.querySelector('#popupAddCard');
 const popUps = document.querySelectorAll('.popup');
 const profileName = document.querySelector('.info__name');
 const profileText = document.querySelector('.info__text');
-const editForm = document.querySelector('.popup__form');
-const popupName = editForm.querySelector('.popup__input_type_name');
-const popupText = editForm.querySelector('.popup__input_type_text');
+const popupEditForm = document.querySelector('.popup__form');
+const popupName = popupEditForm.querySelector('.popup__input_type_name');
+const popupText = popupEditForm.querySelector('.popup__input_type_text');
 const inputName = document.querySelector('.popup__input_type_title');
 const inputDesc = document.querySelector('.popup__input_type_link');
 const formAddCard = document.querySelector('.popup__form-addCard');
@@ -58,8 +58,8 @@ function createCard(name, link) {
   const cardImage = card.querySelector('.element__image');
 
   card.querySelector('.element__desc').textContent = name;
-  card.querySelector('.element__image').src = link;
-  card.querySelector('.element__image').alt = name;
+  cardImage.src = link;
+  cardImage.alt = name;
   buttonLike.addEventListener('click', () => btnLike(buttonLike));
   buttonDelete.addEventListener('click', () => btnDelete(buttonDelete));
   cardImage.addEventListener('click', function () {
@@ -107,6 +107,7 @@ function openedPopup(modal) {
 /*Функция закрытия указанного модального окна*/
 function closesPopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', closePopupEsc);
   const inputs = Array.from(popup.querySelectorAll('.popup__input'));
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = '';
@@ -129,56 +130,31 @@ function addedPopup() {
   openedPopup(popupAddCard);
 }
 
-/* Функция закрытия модальных окон */
-closePopups.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closesPopup(popup));
-});
-
 /* Функция сохранения информации в окне редактирования профиля */
 function savedPopup(e) {
   e.preventDefault();
   profileName.textContent = popupName.value;
   profileText.textContent = popupText.value;
-  profileName.addEventListener('keydown', savePopupEnter);
-  profileText.addEventListener('keydown', savePopupEnter);
   closesPopup(popUp);
 }
 /* Функция закрытия модального окна по Esc */
 const closePopupEsc = (e) => {
   if (e.key === 'Escape') {
-    popUps.forEach(popup => {
-      if (popup.classList.contains('popup_opened')) {
-        closesPopup(popup);
-      }
-    })
-  }
-}
-/* Функция закрытия модального окна по Enter */
-const savePopupEnter = (e) => {
-  if (e.key === 'Enter') {
-    const valideInput = validateInput(e.target.closest('.popup'), e.target, validationList);
-    if (valideInput) {
-      closesPopup(e.target.closest('.popup'));
-    }
+    const popupOpen = document.querySelector('.popup_opened');
+    closesPopup(popupOpen);
   }
 }
 
 /*События*/
-editForm.addEventListener('submit', savedPopup);
+popupEditForm.addEventListener('submit', savedPopup);
 formAddCard.addEventListener('submit', addCard);
-openPopup.addEventListener('click', openEditProfilePopup);
-addCardBtn.addEventListener('click', addedPopup);
-inputName.addEventListener('keydown', savePopupEnter);
-inputDesc.addEventListener('keydown', savePopupEnter);
+btnEditProfile.addEventListener('click', openEditProfilePopup);
+btnAddCard.addEventListener('click', addedPopup);
 
 /* Закрытие модальных окон */
-closePopups.forEach((button) => {
-  const popup = button.closest('.popup');
-  document.removeEventListener('keydown', closePopupEsc);
-  button.addEventListener('click', () => closesPopup(popup));
+popUps.forEach((popup) => {
   popup.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
+    if (e.target === e.currentTarget || e.target.classList.contains('popup__close-button')) {
       closesPopup(popup);
     }
   })
