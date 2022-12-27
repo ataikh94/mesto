@@ -13,4 +13,5 @@
     opacity: 0;
     z-index: -1;
     transition: all .7s ease;
+    box-sizing: border-box;
 }

@@ -7,7 +7,7 @@
     width: 358px;
     padding: 14px 0 11px;
     margin: 18px 36px 37px;
-    border: 0;
+    border: 1px solid;
     border-radius: 2px;
     cursor: pointer;
     background-color: #000;

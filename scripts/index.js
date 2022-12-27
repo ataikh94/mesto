@@ -107,7 +107,12 @@ function openedPopup(modal) {
 /*Функция закрытия указанного модального окна*/
 function closesPopup(popup) {
   popup.classList.remove('popup_opened');
+  const inputs = Array.from(popup.querySelectorAll('.popup__input'));
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = '';
+  }
 }
+
 /*Функция лайка карточки*/
 function btnLike(like) {
   like.classList.toggle('element__button-like_active');
@@ -139,13 +144,7 @@ function savedPopup(e) {
   profileText.addEventListener('keydown', savePopupEnter);
   closesPopup(popUp);
 }
-
-/*События*/
-editForm.addEventListener('submit', savedPopup);
-formAddCard.addEventListener('submit', addCard);
-openPopup.addEventListener('click', openEditProfilePopup);
-addCardBtn.addEventListener('click', addedPopup);
-
+/* Функция закрытия модального окна по Esc */
 const closePopupEsc = (e) => {
   if (e.key === 'Escape') {
     popUps.forEach(popup => {
@@ -155,7 +154,7 @@ const closePopupEsc = (e) => {
     })
   }
 }
-
+/* Функция закрытия модального окна по Enter */
 const savePopupEnter = (e) => {
   if (e.key === 'Enter') {
     const valideInput = validateInput(e.target.closest('.popup'), e.target, validationList);
@@ -164,9 +163,16 @@ const savePopupEnter = (e) => {
     }
   }
 }
-inputName.addEventListener('keydown',savePopupEnter);
-inputDesc.addEventListener('keydown',savePopupEnter);
 
+/*События*/
+editForm.addEventListener('submit', savedPopup);
+formAddCard.addEventListener('submit', addCard);
+openPopup.addEventListener('click', openEditProfilePopup);
+addCardBtn.addEventListener('click', addedPopup);
+inputName.addEventListener('keydown', savePopupEnter);
+inputDesc.addEventListener('keydown', savePopupEnter);
+
+/* Закрытие модальных окон */
 closePopups.forEach((button) => {
   const popup = button.closest('.popup');
   document.removeEventListener('keydown', closePopupEsc);
