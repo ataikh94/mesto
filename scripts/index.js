@@ -107,11 +107,7 @@ function openedPopup(modal) {
 /*Функция закрытия указанного модального окна*/
 function closesPopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closePopupEsc);
-  const inputs = Array.from(popup.querySelectorAll('.popup__input'));
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].value = '';
-  }
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 /*Функция лайка карточки*/
@@ -127,6 +123,10 @@ function btnDelete(deleted) {
 
 /*Функция открытия модального окна для добавления информации*/
 function addedPopup() {
+  const inputs = Array.from(popupAddCard.querySelectorAll('.popup__input'));
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = '';
+  }
   openedPopup(popupAddCard);
 }
 
